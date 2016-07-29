@@ -20,18 +20,29 @@ public $components = array('Pagedata');
 $url = 'http://www.emawebdesign.com';
 		
 echo "Title: " .$this->Pagedata->getTitle($url);
+
 echo "Author: " .$this->Pagedata->getMeta($url, 'author');
+
 echo "Description: " .$this->Pagedata->getMeta($url, 'description');
+
 echo "Keywords: " .$this->Pagedata->getMeta($url, 'keywords');
+
 echo "Twitter title: " .$this->Pagedata->getMeta($url, 'twitter:title');
+
 echo "Twitter description: " .$this->Pagedata->getMeta($url, 'twitter:description');
+
 echo "Twitter image: " .$this->Pagedata->getMeta($url, 'twitter:image');
+
 echo "Open Graph title: " .$this->Pagedata->getOpenGraph($url, 'title');
+
 echo "Open Graph description: " .$this->Pagedata->getOpenGraph($url, 'description');
+
 echo "Open Graph image: " .$this->Pagedata->getOpenGraph($url, 'image');
+
 echo "Body: " .$this->Pagedata->getBody($url);
 			
 print_r($this->Pagedata->getAllLinks($url));
+
 print_r($this->Pagedata->getAllImages($url));
 
 <h2>License</h2>
