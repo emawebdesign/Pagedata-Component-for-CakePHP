@@ -156,4 +156,42 @@ class PagedataComponent extends Component {
 	
 	
 	
+	public function getKeywords($url = NULL) {
+		
+		/*
+		Returns:
+		echo "Key: " .$arr["key"] ."<br>";
+		echo "Count: " .$arr["val"] ."<br>";
+		echo "Density: " .$arr["density"] ."%<br><br>";
+		*/
+		
+		$arr = array();
+		
+		$txt = strip_tags(file_get_contents($url));
+
+		$words = str_word_count(strtolower($txt),1);
+		$wcount = array_count_values($words);
+		
+		foreach ($wcount as $key=>$val) {
+			$density = ($val/count($words))*100;
+			$arr[] = array(
+				'key' => $key,
+				'val' => $val,
+				'density' => number_format($density,2)
+			);
+		}
+		
+		usort($arr, function($a, $b) {
+			return $a['val'] - $b['val'];
+		});
+		
+		$arr = array_reverse($arr, true);
+		
+		return $arr;
+		
+	}
+	
+	
+	
+	
 }
