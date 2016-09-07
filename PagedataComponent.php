@@ -173,12 +173,19 @@ class PagedataComponent extends Component {
 		$wcount = array_count_values($words);
 		
 		foreach ($wcount as $key=>$val) {
+			
 			$density = ($val/count($words))*100;
-			$arr[] = array(
-				'key' => $key,
-				'val' => $val,
-				'density' => number_format($density,2)
-			);
+			
+			if (strlen($key)>3) {
+				
+				$arr[] = array(
+					'key' => $key,
+					'val' => $val,
+					'density' => number_format($density,2)
+				);
+				
+			}
+			
 		}
 		
 		usort($arr, function($a, $b) {
