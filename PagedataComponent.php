@@ -233,6 +233,13 @@ class PagedataComponent extends Component {
 	
 	public function checkResponse($url = NULL) {
 		
+		stream_context_set_default( [
+			'ssl' => [
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+			]
+		]);
+		
 		if (@get_headers($url)) {
 			$headers = @get_headers($url);
 			if (strpos($headers[0], '200 OK') !== false) return(true);
